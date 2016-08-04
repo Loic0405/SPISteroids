@@ -1,2 +1,2 @@
 # SPISteroids
-An Asteroids game made by SPISE 2016 students
+An Asteroids game made by Dion Recai and Loïc Michel for the SPISE 2016
