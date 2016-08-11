@@ -56,6 +56,15 @@ SPRITE_A_AST1 = pygame.image.load('resources\\an_asteroid_1.png').convert_alpha(
 SPRITE_A_AST2 = pygame.image.load('resources\\an_asteroid_2.png').convert_alpha()
 SPRITE_BULLET = pygame.image.load('resources\\bullet.png').convert_alpha()
 
+EXP1 = pygame.image.load('resources\\exp1.png').convert_alpha()
+EXP2 = pygame.image.load('resources\\exp2.png').convert_alpha()
+EXP3 = pygame.image.load('resources\\exp3.png').convert_alpha()
+EXP4 = pygame.image.load('resources\\exp4.png').convert_alpha()
+EXP5 = pygame.image.load('resources\\exp5.png').convert_alpha()
+EXP6 = pygame.image.load('resources\\exp6.png').convert_alpha()
+EXP7 = pygame.image.load('resources\\exp7.png').convert_alpha()
+EXP_LIST = [EXP1, EXP2, EXP3, EXP4, EXP5, EXP6, EXP7]
+
 #Background image
 BG = pygame.image.load('resources\\background.jpg').convert()
 

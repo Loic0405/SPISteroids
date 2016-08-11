@@ -34,7 +34,7 @@ def play():
     const.DISPLAYSURF.fill(const.BGCOLOR) #clear the screen
 
     #Music settings
-    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.set_volume(0.2)
     pygame.mixer.music.play()
     
     while lives > 0:
@@ -69,10 +69,20 @@ def play():
             for i in asteroid_list:
                 if battleShip != 0:
                     if battleShip.check_collision(i):
+                        pos_exp = battleShip.location
                         battleShip = 0
                         lives -= 1
                         for j in range(len(asteroid_list)):
                             asteroid_list.pop()
+
+                        for i in const.EXP_LIST:
+                            const.DISPLAYSURF.fill(const.BGCOLOR)
+                            const.DISPLAYSURF.blit(const.BG, (0,0))
+                            const.DISPLAYSURF.blit(i, pos_exp)
+                            pygame.display.update()
+                            const.FPSCLOCK.tick(15)
+                            
+                            
                 else:
                     continue
 
@@ -164,6 +174,8 @@ def game_over(): #Will take the score as a parameter to show it at the end of th
     game_over_rect.center = (const.WINDOW_WIDTH / 2, const.WINDOW_HEIGHT / 2)
     replay_rect.center = (const.WINDOW_WIDTH / 2, const.WINDOW_HEIGHT / 2 + game_over_surf.get_height())
 
+    const.DISPLAYSURF.fill(const.BGCOLOR)
+    const.DISPLAYSURF.blit(const.BG, (0,0))
     const.DISPLAYSURF.blit(game_over_surf, game_over_rect)
     const.DISPLAYSURF.blit(replay_surf, replay_rect)
 
