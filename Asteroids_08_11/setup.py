@@ -2,10 +2,19 @@
 
 from cx_Freeze import setup, Executable
 
-# On appelle la fonction setup
+target = Executable(
+    script="Asteroids.py",
+    base="Win32GUI",
+    compress=False,
+    copyDependentFiles=True,
+    appendScriptToExe=True,
+    appendScriptToLibrary=False,
+    icon="icon.ico"
+    )
+
 setup(
     name = "Asteroids",
-    version = "0.2",
+    version = "0.3",
     description = "An Asteroids game created by Dion Recai and Loïc Michel for the SPISE 2016",
-    executables = [Executable("Asteroids.py")],
+    executables = [target],
 )

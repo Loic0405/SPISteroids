@@ -15,6 +15,8 @@ def play():
     battleShip = obj.Ship((const.WINDOW_WIDTH // 2 - const.SPRITE_SHIP.get_width() //2 , const.WINDOW_HEIGHT // 2 - const.SPRITE_SHIP.get_height() // 2))
     slow_ship = True
 
+    list_explosion = []
+
     lives = 2
     lives_string = 'Lives: ' + str(lives)
     lives_font = pygame.font.Font(const.BASICFONT, 20)
@@ -34,8 +36,6 @@ def play():
     #Music settings
     pygame.mixer.music.set_volume(0.5)
     pygame.mixer.music.play()
-    
-    #pygame.key.set_repeat(1, 1)
     
     while lives > 0:
         
@@ -59,6 +59,7 @@ def play():
                     if i.check_collision(j):
                         asteroid_list.remove(j)
                         bullet_list.remove(i)
+                        list_explosion.append(obj.Explosion(j))
                         score += 1
                         break
                     
@@ -85,6 +86,10 @@ def play():
         lives_string = 'Lives: ' + str(lives)
         lives_surf = lives_font.render(lives_string, True, const.WHITE)
         const.DISPLAYSURF.blit(lives_surf, lives_rect)
+
+        if len(list_explosion) != 0:
+            for i in list_explosion:
+                i.draw()
 
         #event loop
         
@@ -137,8 +142,11 @@ def play():
             if i.location[0] + i.image.get_width() < 0 or i.location[0] - i.image.get_width() > const.WINDOW_WIDTH\
                or i.location[1] + i.image.get_height() < 0 or i.location[1] - i.image.get_height() > const.WINDOW_HEIGHT:
                 asteroid_list.remove(i)
-                
 
+        for i in list_explosion:
+            if i.size > 30:
+                list_explosion.remove(i)
+                
         pygame.display.update()
         const.FPSCLOCK.tick(15)
         

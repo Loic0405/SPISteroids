@@ -206,3 +206,14 @@ class Button(object):
         self.Draw()
         self.Write(text,textcolor,textsize)
         self.Hover(text,textcolor,textsize)
+
+class Explosion():
+    def __init__(self, asteroid):
+        self.color = const.RED
+        self.posX = int(asteroid.location[0] + asteroid.image.get_width() // 2)
+        self.posY = int(asteroid.location[1] + asteroid.image.get_height() // 2)
+        self.size = 4
+
+    def draw(self):
+        pygame.draw.circle(const.DISPLAYSURF, const.RED, (self.posX, self.posY), self.size, 3)
+        self.size += 1
